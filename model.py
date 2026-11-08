@@ -71,11 +71,7 @@ import torch
 def stack_padded_sequences_to_batch(padded_sequences):
     """Stack a list of equal-length padded id sequences into a 2D LongTensor batch."""
     # TODO: stack padded id sequences into a (B, L) torch.long tensor
-    
-    tensors = []
-    for t in padded_sequences:
-        tensors.append(torch.tensor(t,dtype=torch.long))
-    return torch.stack(tensors)
+    return torch.stack([torch.tensor(t,dtype=torch.long) for t in padded_sequences])
 
 # Step 7 - scale_embeddings_by_sqrt_d_model (not yet solved)
 # TODO: implement
